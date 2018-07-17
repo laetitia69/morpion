@@ -1,3 +1,4 @@
+require_relative "board_case"
 
 class Board
 	include Enumerable
