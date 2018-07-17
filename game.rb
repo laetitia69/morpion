@@ -56,12 +56,12 @@ class Game
                     
                     if @board.game_ending
                         
-                        puts @board.getSymboleWinner
+                       # puts @board.getSymboleWinner
                         
                         if(@board.getSymboleWinner == @players[0].symbol)
-                            puts " #{@players[0].player_name} a gagné"
+                            puts "#{@players[0].player_name} a gagné"
                         elsif(@board.getSymboleWinner == @players[1].symbol)
-                            puts "  #{@players[0].player_name} a gagné"
+                            puts "#{@players[0].player_name} a gagné"
                             else
                             puts " Match teminé pas de gagnant"
                         
