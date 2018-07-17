@@ -5,21 +5,28 @@ class Board
 	#attributs getter et setter réunis
 	attr_accessor :cases
 
-
+	
 	def initialize
-		@cases = Array.new(9)#création de l'array
+		@cases = Array.new(9)#création de l'array 
 
 		#on remplit le tableau case par case
-		@cases.fill(BoardCase.new)
+		#@cases.fill(BoardCase.new)
+		
+        	
+        i = 0
+		cases.each{
+            |x|
+            @cases[i] = BoardCase.new
+            i +=1
+            }
+			
 
-
-
-
+		
 	end
 
 	#Afficher le quadrillage
 	def display
-
+		
 		#a chaque index on appelle l'attribut symbol du fichier board_case
 		puts "#{@cases[0].symbol}|#{@cases[1].symbol}|#{@cases[2].symbol}"
 		puts "#{@cases[3].symbol}|#{@cases[4].symbol}|#{@cases[5].symbol}"
@@ -32,3 +39,4 @@ class Board
 		return @cases[i].update_symbol(symbol)
 	end
 end
+

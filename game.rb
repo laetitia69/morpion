@@ -27,7 +27,7 @@ class Game
 
   def go                            # affiche la grille
     @board = Board.new
-    #@board.display
+    @board.display
     #board.
     @board.display
 end
@@ -45,6 +45,8 @@ end
         puts "Le joueur 2 a choisi la case #{cases}"
         problem = @board.update_case(cases.to_i, @players[1].symbol)
       end 
+        
+         @board.display
       if problem == 1
         altern
       end
@@ -52,8 +54,8 @@ end
   end
 
 
-  def addPlayer(name,symbol)       # définit le joueur et son symbole
-    player = Player.new(name,symbol)
+  def addPlayer(name,symbole)       # définit le joueur et son symbole
+    player = Player.new(name,symbole)
     return player
 end
 
