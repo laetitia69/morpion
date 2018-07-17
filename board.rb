@@ -7,12 +7,8 @@ class Board
     
     
     def initialize
-        @cases = Array.new(9) #création de l'array
+        @cases = Array.new(9){BoardCase.new } #création de l'array
         #on remplit le tableau case par case mais => @cases.fill(BoardCase.new) ne fonctionne pas car .fill méthode remplit toutes les cases à l'identique
-        i = 0
-        @cases.each{ |x| @cases[i] = BoardCase.new #pour chaque case on utilise la class du fichier board_case pour savoir quoi afficher
-            i += 1
-        }
     end
     
     #Afficher le quadrillage
@@ -31,9 +27,9 @@ class Board
     
     def show_index
         #on explique au joueur le numéro de chaque case
-        puts "#{@cases[0] = 1}|#{@cases[1] = 2}|#{@cases[2] = 3}"
-        puts "#{@cases[3] = 4}|#{@cases[4] = 5}|#{@cases[5] = 6}"
-        puts "#{@cases[6] = 7}|#{@cases[7] = 8}|#{@cases[8] = 9}"
+        puts "1|2|3"
+        puts "4|5|6"
+        puts "7|8|9"
     end
     
     def game_ending
@@ -69,6 +65,7 @@ class Board
         @cases[0].symbol == "o" && @cases[4].symbol == "o" && @cases[8].symbol == "o" ||
         @cases[2].symbol == "o" && @cases[4].symbol == "o" && @cases[6].symbol == "o"
 
+        
         return @victory1 || @victory2 || @victory3
     end
     
