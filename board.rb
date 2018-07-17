@@ -69,7 +69,7 @@ class Board
         return @victory1 || @victory2 || @victory3
     end
     
-    def getSymboleWinner
+    def get_symbole_winner
                 
         return "x" if @victory1
         return "o" if @victory2
