@@ -25,14 +25,9 @@ class Game
     end
   end
 
-  def go                            # affiche la grille
-    @board = Board.new
-    @board.display
-    #board.
-    #@board.display
-end
 
-  def action                        # demande une case au joueur et update le fichier board avec les valeurs des cases
+  def action                        
+    @board = Board.new
     begin
     
     puts "Bienvenue sur le TicTacToe lyonnais !"
@@ -52,7 +47,7 @@ end
           cases = gets.chomp.to_i
         end
         puts "#{@players[@turn].player_name} a choisi la case #{cases}"
-        problem = @board.update_case(cases.to_i - 1, @players[@turn].symbol)
+        problem = @board.update_case(cases.to_i - 1, @players[@turn].symbol)  # update le fichier board avec les valeurs des cases
         
          @board.display
       if problem == 1
@@ -62,9 +57,10 @@ end
       end
     }
     elsif i == 2
-      puts "règles ici"
+      puts "Il y a deux joueurs; l’un joue avec le signe x et l’autre avec le signe o. Les deux joueurs remplissent alternativement les cellules vides. Au début du jeu, il y a 9 cellules vides dans un panneau 3x3. Le but est de placer 3 signes identiques sur une colonne, une ligne ou une diagonale. Le jeu prend fin si le panneau est entièrement rempli et si aucun joueur n’arrive à atteindre le but. Bonne chance !\n\n"
     elsif i == 3
-      # @board.
+      @board.show_index
+      puts "\n"
     elsif i == 4
     else 
       puts "Mauvaise commande, recommence !"
@@ -83,9 +79,4 @@ end
 
 end
 game = Game.new("")
-game.go
 game.action
-# puts game.turn
-# game.altern
-# puts game.turn
-#Game.altern
