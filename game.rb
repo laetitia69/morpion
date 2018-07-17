@@ -38,12 +38,12 @@ end
         puts "Joueur 1, choisis une case."
         cases = gets.chomp
         puts "Le joueur 1 a choisi la case #{cases}"
-        problem = board.update_case(cases, players[0].symbol)
+        problem = @board.update_case(cases, players[0].symbol)
       else 
         puts "Joueur 2, choisis une case."
         cases = gets.chomp
         puts "Le joueur 2 a choisi la case #{cases}"
-        problem = board.update_case(cases, players[1].symbol)
+        problem = @board.update_case(cases, players[1].symbol)
       end 
       if problem == 1
         altern
