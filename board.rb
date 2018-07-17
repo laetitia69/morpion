@@ -61,8 +61,15 @@ class Board
         
         @cases[0].symbol == "o" && @cases[4].symbol == "o" && @cases[8].symbol == "o" ||
         @cases[2].symbol == "o" && @cases[4].symbol == "o" && @cases[6].symbol == "o"
-        
+
         return @victory1 || @victory2
     end
+    
+    def getSymboleWinner
+                
+        return "x" if @victory1
+        return "o" if @victory2
+        return "" 
+    end    
 end
 

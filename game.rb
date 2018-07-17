@@ -53,15 +53,25 @@ class Game
                     @board.display
                     
                     if @board.game_ending
+                        
+                        puts @board.getSymboleWinner
+                        
+                        if(@board.getSymboleWinner == @players[0].symbol)
+                            puts " player1 a gagner"
+                        end    
+                       if(@board.getSymboleWinner == @players[1].symbol)
+                            puts " player2 a gagner"
+                       end
+                        
+                                                @board = Board.new
+
                         break
                     end
                     
                     
                     if no_problem == 1
                         altern
-                        elsif @victory1 || victory2 == true
-                        break
-                        else
+                    else
                         puts "Cette case est déjà prise, essaie encore !"
                         
                     end
