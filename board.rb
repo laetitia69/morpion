@@ -28,4 +28,11 @@ class Board
 		#renvoie l'index de la case choisie et utilise methode update de board_case pour le symbol
 		return @cases[i].update_symbol(symbol)
 	end
+
+	def show_index
+		#on explique au joueur le numéro de chaque case
+		puts "#{@cases[0] = 1}|#{@cases[1] = 2}|#{@cases[2] = 3}"
+		puts "#{@cases[3] = 4}|#{@cases[4] = 5}|#{@cases[5] = 6}"
+		puts "#{@cases[6] = 7}|#{@cases[7] = 8}|#{@cases[8] = 9}"
+	end
 end
