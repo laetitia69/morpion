@@ -32,25 +32,47 @@ class Game
     #@board.display
 end
 
-  def action                        # demande une case au joueur
-    9.times {
-      if @turn == 0
-        puts "Joueur 1, choisis une case."
-        cases = gets.chomp
-        puts "Le joueur 1 a choisi la case #{cases}"
-        problem = @board.update_case(cases.to_i, @players[0].symbol)
-      else 
-        puts "Joueur 2, choisis une case."
-        cases = gets.chomp
-        puts "Le joueur 2 a choisi la case #{cases}"
-        problem = @board.update_case(cases.to_i, @players[1].symbol)
-      end 
+  def action                        # demande une case au joueur et update le fichier board avec les valeurs des cases
+    begin
+    
+    puts "Bienvenue sur le TicTacToe lyonnais !"
+    puts "Tape 1 pour jouer"
+    puts "Tape 2 pour afficher les règles"
+    puts "Tape 3 pour afficher les cases"
+    puts "Tape 4 pour sortir du jeu"
+    i = gets.chomp.to_i
+    if i == 1
+      9.times {
+
+        puts "#{@players[@turn].player_name}, choisis une case."
+        cases = gets.chomp.to_i
+        while cases < 1 || cases > 9
+          puts"Merci d'entrer un nombre entre 1 et 9"
+          print ">"
+          cases = gets.chomp.to_i
+        end
+        puts "#{@players[@turn].player_name} a choisi la case #{cases}"
+        problem = @board.update_case(cases.to_i - 1, @players[@turn].symbol)
         
          @board.display
       if problem == 1
         altern
+      else
+        puts "Cette case est déjà prise, essaie encore !"
       end
     }
+    elsif i == 2
+      puts "règles ici"
+    elsif i == 3
+      # @board.
+    elsif i == 4
+    else 
+      puts "Mauvaise commande, recommence !"
+    end 
+  end while i != 4
+
+
+    
   end
 
 
