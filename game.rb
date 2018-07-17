@@ -58,6 +58,7 @@ class Game
                         
                        # puts @board.getSymboleWinner
                         
+                                        
                         if(@board.getSymboleWinner == @players[0].symbol)
                             puts "#{@players[0].player_name} a gagné"
                         elsif(@board.getSymboleWinner == @players[1].symbol)
