@@ -37,8 +37,10 @@ class Game
             
             i = gets.chomp.to_i
             
+            continue = true
+            
             if i == 1
-                9.times {
+                begin
                     
                     puts "#{@players[@turn].player_name}, choisis une case."
                     cases = gets.chomp.to_i
@@ -57,25 +59,30 @@ class Game
                         puts @board.getSymboleWinner
                         
                         if(@board.getSymboleWinner == @players[0].symbol)
-                            puts " player1 a gagner"
+                            puts " #{@players[0].player_name} a gagné"
                         end    
                        if(@board.getSymboleWinner == @players[1].symbol)
-                            puts " player2 a gagner"
+                            puts "  #{@players[0].player_name} a gagné"
                        end
                         
-                                                @board = Board.new
+                        continue = false
+                        @board = Board.new
 
                         break
-                    end
-                    
-                    
-                    if no_problem == 1
+                    else
+                        
+                        if no_problem == 1
                         altern
                     else
                         puts "Cette case est déjà prise, essaie encore !"
                         
                     end
-                }
+                        
+                    end    
+                    
+                    
+                    
+                end while(continue)
                 
                 elsif i == 2
                 puts "Il y a deux joueurs; l’un joue avec le signe x et l’autre avec le signe o. Les deux joueurs remplissent alternativement les cellules vides. Au début du jeu, il y a 9 cellules vides dans un panneau 3x3. Le but est de placer 3 signes identiques sur une colonne, une ligne ou une diagonale. Le jeu prend fin si le panneau est entièrement rempli et si aucun joueur n’arrive à atteindre le but. Bonne chance !\n\n"
