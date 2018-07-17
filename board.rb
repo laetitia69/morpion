@@ -38,6 +38,13 @@ class Board
     
     def game_ending
         
+        @victory3 =
+        !@cases[0].is_empty && !@cases[1].is_empty && !@cases[2].is_empty && 
+        !@cases[3].is_empty && !@cases[4].is_empty && !@cases[5].is_empty && 
+        !@cases[6].is_empty && !@cases[7].is_empty && !@cases[8].is_empty
+        
+          
+        
         # verifier si joueur avec symbol X a gagne
         @victory1 =
         @cases[0].symbol == "x" && @cases[1].symbol == "x" && @cases[2].symbol == "x" || #verifie une victoire Horizontale pour
@@ -62,7 +69,7 @@ class Board
         @cases[0].symbol == "o" && @cases[4].symbol == "o" && @cases[8].symbol == "o" ||
         @cases[2].symbol == "o" && @cases[4].symbol == "o" && @cases[6].symbol == "o"
 
-        return @victory1 || @victory2
+        return @victory1 || @victory2 || @victory3
     end
     
     def getSymboleWinner
