@@ -5,21 +5,27 @@ class Board
 	#attributs getter et setter réunis
 	attr_accessor :cases
 
-	
-	def initialize
-		@cases = Array.new(9)#création de l'array 
 
-		#on rempli le tableau 9 fois par la class BoardCases qui définit une seule case
-		9.times {|i|
-			@cases.push(BoardCases.new(i))
-		}
+	def initialize
+		@cases = Array.new(9) #création de l'array
+		#on remplit le tableau case par case mais => @cases.fill(BoardCase.new) ne fonctionne pas car .fill méthode remplit toutes les cases à l'identique
+    i = 0
+		cases.each{ |x| @cases[i] = BoardCase.new #pour chaque case on utilise la class du fichier board_case pour savoir quoi afficher
+			i += 1
+            }
 	end
 
 	#Afficher le quadrillage
 	def display
-		print @cases[0..2]
-		print @cases[3..5]
-		print @cases[6..8]
+		#a chaque index on appelle l'attribut symbol du fichier board_case.rb
+		puts "#{@cases[0].symbol}|#{@cases[1].symbol}|#{@cases[2].symbol}"
+		puts "#{@cases[3].symbol}|#{@cases[4].symbol}|#{@cases[5].symbol}"
+		puts "#{@cases[6].symbol}|#{@cases[7].symbol}|#{@cases[8].symbol}"
 	end
 
+	#Mettre à jour le board avec nouvelles entrées de chaque tour
+	def update_case(i, symbol)
+		#renvoie l'index de la case choisie et utilise methode update de board_case pour le symbol
+		return @cases[i].update_symbol(symbol)
+	end
 end

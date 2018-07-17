@@ -29,7 +29,7 @@ class Game
     @board = Board.new
     @board.display
     #board.
-    @board.display
+    #@board.display
 end
 
   def action                        # demande une case au joueur
@@ -38,13 +38,15 @@ end
         puts "Joueur 1, choisis une case."
         cases = gets.chomp
         puts "Le joueur 1 a choisi la case #{cases}"
-        problem = board.update_case(cases, players[0].symbol)
+        problem = @board.update_case(cases.to_i, @players[0].symbol)
       else 
         puts "Joueur 2, choisis une case."
         cases = gets.chomp
         puts "Le joueur 2 a choisi la case #{cases}"
-        problem = board.update_case(cases, players[1].symbol)
+        problem = @board.update_case(cases.to_i, @players[1].symbol)
       end 
+        
+         @board.display
       if problem == 1
         altern
       end
@@ -52,8 +54,8 @@ end
   end
 
 
-  def addPlayer(name,symbole)       # définit le joueur et son symbole
-    player = Player.new(name,symbole)
+  def addPlayer(name,symbol)       # définit le joueur et son symbole
+    player = Player.new(name,symbol)
     return player
 end
 
