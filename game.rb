@@ -20,7 +20,7 @@ class Game
   def altern                        # définit l'alternance entre les joueurs tour par tour
     if @turn == 0
       @turn += 1
-    else @turn -= 1
+      else @turn -= 1
     end
   end
 
@@ -48,16 +48,17 @@ class Game
           cases = gets.chomp.to_i
         end
         puts "#{@players[@turn].player_name} a choisi la case #{cases}"
-        problem = @board.update_case(cases.to_i - 1, @players[@turn].symbol)  # update le fichier board avec les valeurs des cases
+        no_problem = @board.update_case(cases.to_i - 1, @players[@turn].symbol)  # update le fichier board avec les valeurs des cases
         
-         @board.display
+        @board.display
 
-      if problem == 1
+      if no_problem == 1
         altern
-      
+      elsif @victory1 || victory2 == true
+        break
       else
         puts "Cette case est déjà prise, essaie encore !"
-        
+
       end
     }
 
@@ -76,10 +77,33 @@ class Game
     end 
   end while i != 4
 
-
-    
   end
 
+  def game_ending
+		# verifier si joueur avec symbol X a gagne
+      @victory1 =  @cases[0] == "x" && @cases[1] == "x" && @cases[2] == "x" || #verifie une victoire Horizontale pour
+   		 @cases[3] == "x" && @cases[4] == "x" && @cases[5] == "x" ||
+   		 @cases[6] == "x" && @cases[7] == "x" && @cases[8] == "x" ||
+
+   		 @cases[0] == "x" && @cases[3] == "x" && @cases[6] == "x" || #verfier une victoire verticale pour
+       @cases[1] == "x" && @cases[4] == "x" && @cases[7] == "x" ||
+       @cases[2] == "x" && @cases[5] == "x" && @cases[8] == "x" ||
+
+       @cases[0] == "x" && @cases[4] == "x" && @cases[8] == "x" || #verifier una victoire diagonale
+       @cases[2] == "x" && @cases[4] == "x" && @cases[6] == "x"
+         
+       @victory2 = @cases[0] == "o" && @cases[1] == "o" && @cases[2] == "o" ||
+       @cases[3] == "o" && @cases[4] == "o" && @cases[5] == "o" ||
+       @cases[6] == "o" && @cases[7] == "o" && @cases[8] == "o" ||
+
+       @cases[0] == "o" && @cases[3] == "o" && @cases[6] == "o" ||
+       @cases[1] == "o" && @cases[4] == "o" && @cases[7] == "o" ||
+       @cases[2] == "o" && @cases[5] == "o" && @cases[8] == "o" ||
+
+       @cases[0] == "o" && @cases[4] == "o" && @cases[8] == "o" ||
+       @cases[2] == "o" && @cases[4] == "o" && @cases[6] == "o"
+
+    end
 
   def addPlayer(name,symbol)       # définit le joueur et son symbole
     player = Player.new(name,symbol)
@@ -89,3 +113,4 @@ end
 end
 game = Game.new("")
 game.action
+game.game_ending
