@@ -29,7 +29,7 @@ class Game
     @board = Board.new
     @board.display
     #board.
-    @board.display
+    #@board.display
 end
 
   def action                        # demande une case au joueur
@@ -54,8 +54,8 @@ end
   end
 
 
-  def addPlayer(name,symbole)       # définit le joueur et son symbole
-    player = Player.new(name,symbole)
+  def addPlayer(name,symbol)       # définit le joueur et son symbole
+    player = Player.new(name,symbol)
     return player
 end
 
